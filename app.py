@@ -1,0 +1,1 @@
+print("AI Document Assistant setup successful!")
