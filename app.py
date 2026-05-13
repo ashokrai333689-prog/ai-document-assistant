@@ -18,16 +18,30 @@
 # print(cleaned_text[:1000])
 
 from src.pdf_loader import load_pdf
-from src.chunker import clean_text
+from src.chunker import clean_text, chunk_text
 
 pdf_path = "data/sample.pdf"
 
+# Load PDF
 raw_text = load_pdf(pdf_path)
 
+# Clean text
 cleaned_text = clean_text(raw_text)
 
-print("\n RAW TEXT:\n")
-print(raw_text[:500])
+# Create chunks
+chunks = chunk_text(cleaned_text)
 
-print("\n CLEANED TEXT:\n")
-print(cleaned_text[:500])
+# Print stats
+print(f"\nTotal chunks: {len(chunks)}")
+
+# Print first chunk
+print("\nFIRST CHUNK:\n")
+print(chunks[0])
+
+# Print second chunk
+print("\nSECOND CHUNK:\n")
+print(chunks[1])
+
+for i, chunk in enumerate(chunks):
+    print(f"\n--- Chunk {i+1} ---")
+    print(f"Length: {len(chunk)}")

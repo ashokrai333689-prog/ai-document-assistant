@@ -1,5 +1,5 @@
 import re
-
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 def clean_text(text):
     # Remove extra whitespace
@@ -9,3 +9,13 @@ def clean_text(text):
     text = re.sub(r"\n+", "\n", text)
 
     return text.strip()
+
+def chunk_text(text):
+    splitter = RecursiveCharacterTextSplitter(
+        chunk_size=1000,
+        chunk_overlap=200
+    )
+
+    chunks = splitter.split_text(text)
+
+    return chunks
