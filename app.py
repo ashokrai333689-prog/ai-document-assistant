@@ -19,6 +19,7 @@
 
 from src.pdf_loader import load_pdf
 from src.chunker import clean_text, chunk_text
+from src.embedding import create_embeddings
 
 pdf_path = "data/sample.pdf"
 
@@ -30,6 +31,9 @@ cleaned_text = clean_text(raw_text)
 
 # Create chunks
 chunks = chunk_text(cleaned_text)
+
+# Generate embeddings
+embeddings = create_embeddings(chunks)
 
 # Print stats
 print(f"\nTotal chunks: {len(chunks)}")
